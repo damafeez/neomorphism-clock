@@ -1,3 +1,11 @@
+:root {
+  --hand-protrusion: -1.25rem;
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 14px;
+  }
+}
 body {
   margin: 0;
   display: flex;
@@ -9,26 +17,29 @@ body {
 * {
   box-sizing: border-box;
 }
+.wrapper {
+  position: relative;
+}
 .clock {
-  width: 400px;
-  height: 400px;
+  width: 80vw;
+  height: 80vw;
+  max-width: 25rem;
+  max-height: 25rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -8px -8px 30px hsl(210, 56%, 100%),
-    -8px -8px 30px hsl(210, 56%, 93%), 8px 8px 35px hsl(210, 56%, 78%);
-}
-.wrapper {
-  position: relative;
+  box-shadow: -0.5rem -0.5rem 2.2rem hsl(210, 56%, 100%),
+    -0.5rem -0.5rem 2.2rem hsl(210, 56%, 93%),
+    0.5rem 0.5rem 2.5rem hsl(210, 56%, 78%);
 }
 .clock::before,
 .clock::after,
 .wrapper::before,
 .wrapper::after {
   content: "";
-  height: 5px;
-  width: 30px;
+  height: 0.8%;
+  width: 8%;
   background-color: #b8c5d3;
 }
 .wrapper::before,
@@ -39,10 +50,10 @@ body {
   z-index: 1;
 }
 .wrapper::before {
-  top: 13px;
+  top: 0.8rem;
 }
 .wrapper::after {
-  bottom: 13px;
+  bottom: 0.8rem;
 }
 .clock::before {
   margin-right: auto;
@@ -51,32 +62,33 @@ body {
   margin-left: auto;
 }
 .inner-circle {
-  width: 200px;
-  height: 200px;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
-  box-shadow: -8px -8px 30px hsl(210, 56%, 100%),
-    -8px -8px 25px hsl(210, 56%, 93%), 8px 8px 25px hsl(210, 56%, 78%);
+  box-shadow: -0.5rem -0.5rem 2.2rem hsl(210, 56%, 100%),
+    -0.5rem -0.5rem 2rem hsl(210, 56%, 93%),
+    0.5rem 0.5rem 2rem hsl(210, 56%, 78%);
   position: relative;
 }
 .hour-hand,
 .minute-hand,
 .second-hand {
-  width: 4px;
+  width: 1.7%;
   position: absolute;
   left: 50%;
-  bottom: calc(50% - 20px);
-  transform-origin: center calc(100% - 20px);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  bottom: calc(50% + var(--hand-protrusion));
+  transform-origin: center calc(100% + var(--hand-protrusion));
+  box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.05);
 }
 .hour-hand {
-  height: 100px;
+  height: 50%;
   background-color: #828282;
 }
 .minute-hand {
-  height: 130px;
+  height: 75%;
   background-color: #828282;
 }
 .second-hand {
-  height: 150px;
+  height: 85%;
   background-color: #ea5756;
 }
